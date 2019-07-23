@@ -5,9 +5,8 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects
 {
     // Unity heavily requires Serializable attributes.
     [Serializable]
-    public abstract class Entity : ScriptableObject
+    public abstract class Entity
     {
         public string Name { get; set; }
-        public Sprite Sprite { get; set; }
     }
 }
