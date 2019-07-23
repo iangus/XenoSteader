@@ -1,0 +1,4 @@
+﻿{
+	"name": "XenoSteader.Behaviors",
+  "references": ["XenoSteader.Core", "XenoSteader.Systems"]
+}
