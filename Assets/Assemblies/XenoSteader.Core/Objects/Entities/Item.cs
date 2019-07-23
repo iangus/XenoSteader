@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Assemblies.XenoSteader.Core.Objects
+namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities
 {
     public abstract class Item : Entity
     {

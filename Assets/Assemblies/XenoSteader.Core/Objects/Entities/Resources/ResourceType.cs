@@ -1,7 +1,10 @@
 ﻿using System;
+using UnityEngine;
 
-namespace Assets.Assemblies.XenoSteader.Core.Objects
+namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Resources
 {
+    [Serializable]
+    [CreateAssetMenu]
     public class ResourceType : Entity, IEquatable<ResourceType>
     {
         public string ResourceName;
@@ -11,7 +14,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects
             {
                 return false;
             }
-
+            
             return ResourceName == other.ResourceName;
         }
     }

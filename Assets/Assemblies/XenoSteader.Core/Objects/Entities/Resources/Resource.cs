@@ -1,35 +1,33 @@
-﻿using JetBrains.Annotations;
+﻿using Assets.Assemblies.XenoSteader.Core.Objects.Utilities;
+using JetBrains.Annotations;
 
-namespace Assets.Assemblies.XenoSteader.Core.Objects.Resources
+namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Resources
 {
     public class Resource : Item
     {
         /// <summary>
         /// Denotes the # of items in the stack,
         /// </summary>
-        public int StackSize;
-
+        public IntVariable StackSize;
         public ResourceType ResourceType;
 
-        public Resource()
-        {
-            StackSize = 0;
-        }
 
         public bool TryAddResourceToStack([NotNull] Resource resource)
         {
             if (resource.ResourceType == ResourceType)
             {
-                StackSize
+                StackSize.Value += resource.StackSize;
+                return true;
             }
-            StackSize++;
+
+            return false;
         }
 
         public bool TryRemoveItemsFromStack(int numberToRemove)
         {
             if (StackSize >= numberToRemove)
             {
-                StackSize -= numberToRemove;
+                StackSize.Value -= numberToRemove;
                 return true;
             }
 

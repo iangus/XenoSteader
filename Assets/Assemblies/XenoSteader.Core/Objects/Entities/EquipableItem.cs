@@ -1,4 +1,4 @@
-﻿namespace Assets.Assemblies.XenoSteader.Core.Objects
+﻿namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities
 {
     public class EquipableItem : Item
     {
