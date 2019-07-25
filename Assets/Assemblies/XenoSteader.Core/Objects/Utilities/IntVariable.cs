@@ -2,7 +2,7 @@
 
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Utilities
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Utilities/IntVariable")]
     public class IntVariable : ScriptableObject
     {
         public int IntegerValue;

@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Resources
 {
     [Serializable]
-    [CreateAssetMenu(menuName = "Resources/")]
+    [CreateAssetMenu(menuName = "Resources/ResourceType")]
     public class ResourceType : Entity, IEquatable<ResourceType>
     {
         public string ResourceName;
