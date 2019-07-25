@@ -25,7 +25,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Utilities
         /// IntVariable.Value = 5;
         /// var result = IntVariable + 5;
         /// result would = 10
-        /// Unsure how to make this work the other way..
+        /// Unsure how to implicitly make it so a IntVariable can be set equal to an int.
         public static implicit operator int(IntVariable intVariable) => intVariable.Value;
     }
 }

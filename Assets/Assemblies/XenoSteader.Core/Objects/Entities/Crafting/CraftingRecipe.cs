@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Crafting
 {
-    [CreateAssetMenu(menuName = "CraftingRecipes")]
+    [CreateAssetMenu(menuName = "Crafting/CraftingRecipes")]
     [Serializable]
     public class CraftingRecipe : Entity
     {
@@ -19,22 +19,23 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Crafting
 
         public virtual bool CanCraft(ICollection<Resource> resources)
         {
-            var matchingResources = resources.Where(c => ResourceRequirements.Any(t => t.Equals(c)));
-            var resourceTypes = resources.Select(t => t.ResourceType);
+            var resourceTypes = resources.Select(resource => resource.ResourceType);
             return ContainsAllResources(resourceTypes) && HasEnoughResources(resources);
         }
 
         private bool ContainsAllResources(IEnumerable<ResourceType> resourceTypes)
         {
-            return ResourceRequirements.All(c => resourceTypes.Contains(c.ResourceType));
+            return ResourceRequirements
+                .All(resourceRequirement => resourceTypes.Contains(resourceRequirement.ResourceType));
         }
 
         private bool HasEnoughResources(IEnumerable<Resource> resources)
         {
             var resourceTuples = resources.Select(
-                c => new Tuple<Resource, ResourceRequirement>(
-                    c, ResourceRequirements.Single(t => t.ResourceType == c.ResourceType)));
-            return resourceTuples.All(c => c.Item1.StackSize > c.Item2.RequiredResourceNumber);
+                resource => new Tuple<Resource, ResourceRequirement>(
+                    resource, ResourceRequirements
+                        .Single(resourceRequirement => resourceRequirement.ResourceType == resource.ResourceType)));
+            return resourceTuples.All(tuple => tuple.Item1.StackSize > tuple.Item2.RequiredResourceNumber);
         }
     }
 }

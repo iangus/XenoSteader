@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Resources
 {
     [Serializable]
-    [CreateAssetMenu]
+    [CreateAssetMenu(menuName = "Crafting/ResourceRequirement")]
     public class ResourceRequirement : Entity
     {
         public ResourceType ResourceType;
