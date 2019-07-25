@@ -21,11 +21,22 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Utilities
         /// Magic operator to handle conversion.
         /// </summary>
         /// <param name="intVariable"></param>
-        /// Allows things like
-        /// IntVariable.Value = 5;
-        /// var result = IntVariable + 5;
-        /// result would = 10
-        /// Unsure how to implicitly make it so a IntVariable can be set equal to an int.
+        /// This is here to override all the implicit Comparison operators
+        /// such as ==
         public static implicit operator int(IntVariable intVariable) => intVariable.Value;
+
+
+        // Left Bound arguments
+        public static int operator +(IntVariable intVariable, int integer) => intVariable.Value + integer;
+        public static int operator -(IntVariable intVariable, int integer) => intVariable.Value - integer;
+        public static int operator *(IntVariable intVariable, int integer) => intVariable.Value * integer;
+        public static int operator /(IntVariable intVariable, int integer) => intVariable.Value / integer;
+
+
+        // Right bound arguments
+        public static int operator +(int integer, IntVariable intVariable) => integer + intVariable.Value;
+        public static int operator -(int integer, IntVariable intVariable) => integer - intVariable.Value;
+        public static int operator *(int integer, IntVariable intVariable) => integer * intVariable.Value;
+        public static int operator /(int integer, IntVariable intVariable) => integer / intVariable.Value;
     }
 }
