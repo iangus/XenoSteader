@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9688a8f26191a3489f10b1288ccd484, type: 3}
   m_Name: 60 Steel
   m_EditorClassIdentifier: 
-  ResourceType: {fileID: 0}
-  RequiredResourceNumber: {fileID: 0}
+  ResourceType: {fileID: 11400000, guid: 685b8a7996c93254c8e2d7f0c2f93657, type: 2}
+  RequiredResourceNumber: {fileID: 11400000, guid: ec9732204744ebc4cbedfb59cb3ec50d,
+    type: 2}

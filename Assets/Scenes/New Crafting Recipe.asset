@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13a7b91de740b84f94d87f0ef08463f, type: 3}
   m_Name: New Crafting Recipe
   m_EditorClassIdentifier: 
+  ResourceRequirements:
+  - {fileID: 11400000, guid: 24103b61edf7a1747b08e475d7032384, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

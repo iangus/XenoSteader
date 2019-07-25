@@ -34,7 +34,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Crafting
             var resourceTuples = resources.Select(
                 c => new Tuple<Resource, ResourceRequirement>(
                     c, ResourceRequirements.Single(t => t.ResourceType == c.ResourceType)));
-            return resourceTuples.All(c => c.Item1.TryRemoveItemsFromStack(c.Item2.RequiredResourceNumber));
+            return resourceTuples.All(c => c.Item1.StackSize > c.Item2.RequiredResourceNumber);
         }
     }
 }

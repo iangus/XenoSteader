@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: IntVariable
   m_EditorClassIdentifier: 
   IntegerValue: 0
-  ConstantValue: 0
-  UseConstantValue: 0
+  ConstantValue: 60
+  UseConstantValue: 1

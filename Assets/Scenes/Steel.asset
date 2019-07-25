@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c2f81a9c520f834c9a90685547b3fe3, type: 3}
   m_Name: Steel
   m_EditorClassIdentifier: 
-  ResourceName: 
+  ResourceName: Steel
