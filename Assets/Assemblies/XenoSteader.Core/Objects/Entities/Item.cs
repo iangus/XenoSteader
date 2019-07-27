@@ -19,6 +19,8 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities
             set => _itemType = value;
         }
 
+        public int quantity;
+
         /// <summary>
         /// Sprite of an item to display in an inventory UI
         /// </summary>
