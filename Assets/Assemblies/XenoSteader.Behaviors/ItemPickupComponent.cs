@@ -1,17 +1,18 @@
-﻿using UnityEngine;
+﻿using System;
+using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace Assets.Assemblies.XenoSteader.Behaviors
 {
     [RequireComponent(typeof(SphereCollider))]
     public class ItemPickupComponent : MonoBehaviour
     {
-        public InventoryComponent InventoryListener;
         private ItemPickupEvent _pickupEvent;
 
         public void Start()
         {
             _pickupEvent = new ItemPickupEvent();
-            _pickupEvent.AddListener(InventoryListener.Inventory.AddItemToInventory);
         }
 
         public void OnCollisionEnter(Collision collision)
@@ -21,6 +22,11 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
             {
                 _pickupEvent.Invoke(droppablePickup.Item);
             }
+        }
+
+        public void SubscribeForPickupEvents(UnityAction<Item> callBack)
+        {
+            _pickupEvent.AddListener(callBack);
         }
     }
 }

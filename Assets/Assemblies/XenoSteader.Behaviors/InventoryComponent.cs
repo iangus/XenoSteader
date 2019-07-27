@@ -3,9 +3,9 @@ using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Behaviors
 {
-    public class InventoryComponent : MonoBehaviour
+    public abstract class InventoryComponent : MonoBehaviour
     {
-        public InventorySystem Inventory { get; private set; }
+        protected InventorySystem Inventory { get; private set; }
 
         public void Awake()
         {
