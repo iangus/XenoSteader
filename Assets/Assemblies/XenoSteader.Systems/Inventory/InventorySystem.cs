@@ -8,40 +8,38 @@ using UnityEngine;
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
     [Serializable]
-    public class InventorySystem
+    public class InventorySystem : AbstractSystem
     {
         [SerializeField]
-        protected EntityCollection<Item> _entityCollection;
+        protected EntityCollection EntityCollection;
 
-        public InventorySystem()
+        protected override InventorySystem Init<T>()
         {
-            // So apparently this throws an exception, because you're not supposed to call the constructor
-            // But if you do ScriptableObject.CreateInstance<> it explodes. 
-            // For now I'll leave this as it only throws on the game closing.
-            _entityCollection = new EntityCollection<Item>();
+            EntityCollection = ScriptableObject.CreateInstance<EntityCollection>();
+            return this;
         }
 
         /// <summary>
         /// Get a read only sequence of items.
         /// </summary>
-        public IEnumerable<Item> Items => _entityCollection;
+        public IEnumerable<Item> Items => EntityCollection;
 
         /// <summary>
         /// Remove a reference to an item from the list
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveItemFromInventory([NotNull] Item item) => _entityCollection.Remove(item);
+        public void RemoveItemFromInventory([NotNull] Item item) => EntityCollection.Remove(item);
 
         /// <summary>
         /// Add a single reference to an item to the list
         /// </summary>
         /// <param name="item"></param>
-        public void AddItemToInventory([NotNull] Item item) => _entityCollection.Add(item);
+        public void AddItemToInventory([NotNull] Item item) => EntityCollection.Add(item);
 
         /// <summary>
         /// Add a enumerable of references to the inventory
         /// </summary>
         /// <param name="items"></param>
-        public void AddItemsToInventory([NotNull] IEnumerable<Item> items) => _entityCollection.AddRange(items);
+        public void AddItemsToInventory([NotNull] IEnumerable<Item> items) => EntityCollection.AddRange(items);
     }
 }
