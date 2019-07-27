@@ -1,38 +1,40 @@
 ﻿using System.Collections.Generic;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
+using Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections;
+using JetBrains.Annotations;
 
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
     public class InventorySystem
     {
-        private List<Item> _items;
+        private readonly EntityCollection<Item> _entityCollection;
 
         public InventorySystem()
         {
-            _items = new List<Item>();
+            _entityCollection = new EntityCollection<Item>();
         }
 
         /// <summary>
         /// Get a read only sequence of items.
         /// </summary>
-        public IEnumerable<Item> Items => _items;
+        public IEnumerable<Item> Items => _entityCollection;
 
         /// <summary>
         /// Remove a reference to an item from the list
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveItemFromInventory(Item item) => _items.Remove(item);
+        public void RemoveItemFromInventory([NotNull] Item item) => _entityCollection.Remove(item);
 
         /// <summary>
         /// Add a single reference to an item to the list
         /// </summary>
         /// <param name="item"></param>
-        public void AddItemToInventory(Item item) => _items.Add(item);
+        public void AddItemToInventory([NotNull] Item item) => _entityCollection.Add(item);
 
         /// <summary>
         /// Add a enumerable of references to the inventory
         /// </summary>
         /// <param name="items"></param>
-        public void AddItemsToInventory(IEnumerable<Item> items) => _items.AddRange(items);
+        public void AddItemsToInventory([NotNull] IEnumerable<Item> items) => _entityCollection.AddRange(items);
     }
 }
