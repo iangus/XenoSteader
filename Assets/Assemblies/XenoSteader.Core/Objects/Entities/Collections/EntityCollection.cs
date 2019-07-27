@@ -6,22 +6,20 @@ using UnityEngine;
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
 {
     [Serializable]
-    [CreateAssetMenu]
-    // leaving the name as entity collection until I figure out a way to fix this...
-    public class EntityCollection : Entity, IList<Item>
+    public abstract class EntityCollection<T> : Entity, IList<T> where T : Entity
     {
         [SerializeField]
-        private readonly List<Item> _innerList;
+        private readonly List<T> _innerList;
         [SerializeField]
         public int Count => _innerList.Count;
         public bool IsReadOnly => false;
 
         public EntityCollection()
         {
-            _innerList = new List<Item>();
+            _innerList = new List<T>();
         }
 
-        public IEnumerator<Item> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             return _innerList.GetEnumerator();
         }
@@ -31,14 +29,14 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
             return GetEnumerator();
         }
 
-        public void AddRange(IEnumerable<Item> items)
+        public void AddRange(IEnumerable<T> entities)
         {
-            _innerList.AddRange(items);
+            _innerList.AddRange(entities);
         }
 
-        public void Add(Item item)
+        public void Add(T entity)
         {
-            _innerList.Add(item);
+            _innerList.Add(entity);
         }
 
         public void Clear()
@@ -46,12 +44,12 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
             _innerList.Clear();
         }
 
-        public bool Contains(Item item)
+        public bool Contains(T entity)
         {
-            return _innerList.Contains(item);
+            return _innerList.Contains(entity);
         }
 
-        public void CopyTo(Item[] array, int arrayIndex)
+        public void CopyTo(T[] array, int arrayIndex)
         {
             var k = 0;
             for (var i = arrayIndex; i < array.Length; i++, k++)
@@ -60,19 +58,19 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
             }
         }
 
-        public bool Remove(Item item)
+        public bool Remove(T entity)
         {
-            return _innerList.Remove(item);
+            return _innerList.Remove(entity);
         }
 
-        public int IndexOf(Item item)
+        public int IndexOf(T entity)
         {
-            return _innerList.IndexOf(item);
+            return _innerList.IndexOf(entity);
         }
 
-        public void Insert(int index, Item item)
+        public void Insert(int index, T entity)
         {
-            _innerList.Insert(index, item);
+            _innerList.Insert(index, entity);
         }
 
         public void RemoveAt(int index)
@@ -80,7 +78,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
             _innerList.RemoveAt(index);
         }
 
-        public Item this[int index]
+        public T this[int index]
         {
             get => _innerList[index];
             set => _innerList[index] = value;

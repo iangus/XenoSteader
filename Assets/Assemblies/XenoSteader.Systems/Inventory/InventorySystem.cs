@@ -11,11 +11,11 @@ namespace Assets.Assemblies.XenoSteader.Systems.Inventory
     public class InventorySystem : AbstractSystem
     {
         [SerializeField]
-        protected EntityCollection EntityCollection;
+        protected ItemCollection EntityCollection;
 
         protected override InventorySystem Init<T>()
         {
-            EntityCollection = ScriptableObject.CreateInstance<EntityCollection>();
+            EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
             return this;
         }
 
