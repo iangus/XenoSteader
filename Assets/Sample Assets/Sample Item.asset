@@ -12,3 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d65225b2ca7ec9746892e53a7680d289, type: 3}
   m_Name: Sample Item
   m_EditorClassIdentifier: 
+  _name: Test Item
+  _itemType: 
+  _sprite: {fileID: 0}

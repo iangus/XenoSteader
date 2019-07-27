@@ -11,13 +11,23 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities
         // But will never go into an inventory. I see this as how rimworld handles some structures
         // 3d objects, but cannot ever be an 'item'
         // So the way item currently exists today is without context to the 3d component
-        [SerializeField]
-        public string ItemType { get; set; }
+        [SerializeField] private string _itemType;
+
+        public string ItemType
+        {
+            get => _itemType;
+            set => _itemType = value;
+        }
 
         /// <summary>
         /// Sprite of an item to display in an inventory UI
         /// </summary>
-        [SerializeField]
-        public Sprite Sprite { get; set; }
+        [SerializeField] private Sprite _sprite;
+
+        public Sprite Sprite
+        {
+            get => _sprite;
+            set => _sprite = value;
+        }
     }
 }

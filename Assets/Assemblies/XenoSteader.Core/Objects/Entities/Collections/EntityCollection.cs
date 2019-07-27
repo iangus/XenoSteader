@@ -9,7 +9,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
     public abstract class EntityCollection<T> : Entity, IList<T> where T : Entity
     {
         [SerializeField]
-        private readonly List<T> _innerList;
+        public readonly List<T> _innerList;
         [SerializeField]
         public int Count => _innerList.Count;
         public bool IsReadOnly => false;
