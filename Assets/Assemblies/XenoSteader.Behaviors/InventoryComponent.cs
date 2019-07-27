@@ -11,7 +11,7 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
         [SerializeField]
         protected InventorySystem Inventory;
 
-        public void Awake()
+        public virtual void Awake()
         {
             Inventory = AbstractSystem.CreateInstance<InventorySystem>();
         }

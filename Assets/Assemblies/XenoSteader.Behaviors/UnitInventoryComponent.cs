@@ -7,8 +7,9 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
     [RequireComponent(typeof(ItemPickupComponent))]
     public class UnitInventoryComponent : InventoryComponent
     {
-        public void Start()
+        public override void Awake()
         {
+            base.Awake();
             var pickupComponent = GetComponent<ItemPickupComponent>();
             pickupComponent.SubscribeForPickupEvents(Inventory.AddItemToInventory);
         }

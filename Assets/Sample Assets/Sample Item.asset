@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Sample Item
   m_EditorClassIdentifier: 
   _name: Test Item
-  _itemType: 
+  _itemType: Thing
   _sprite: {fileID: 0}
