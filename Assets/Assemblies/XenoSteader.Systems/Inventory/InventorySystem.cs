@@ -1,16 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections;
 using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
+    [Serializable]
     public class InventorySystem
     {
-        private readonly EntityCollection<Item> _entityCollection;
+        [SerializeField]
+        protected EntityCollection<Item> _entityCollection;
 
         public InventorySystem()
         {
+            // So apparently this throws an exception, because you're not supposed to call the constructor
+            // But if you do ScriptableObject.CreateInstance<> it explodes. 
+            // For now I'll leave this as it only throws on the game closing.
             _entityCollection = new EntityCollection<Item>();
         }
 

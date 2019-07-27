@@ -1,11 +1,17 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
 {
+    [Serializable]
+    [CreateAssetMenu]
     public class EntityCollection<T> : Entity, IList<T> where T : Entity
     {
+        [SerializeField]
         private readonly List<T> _innerList;
+        [SerializeField]
         public int Count => _innerList.Count;
         public bool IsReadOnly => false;
 

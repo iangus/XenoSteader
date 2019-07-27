@@ -10,7 +10,7 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
     {
         private ItemPickupEvent _pickupEvent;
 
-        public void Start()
+        public void Awake()
         {
             _pickupEvent = new ItemPickupEvent();
         }
@@ -21,6 +21,7 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
             if (droppablePickup != null)
             {
                 _pickupEvent.Invoke(droppablePickup.Item);
+                Destroy(collision.gameObject);
             }
         }
 

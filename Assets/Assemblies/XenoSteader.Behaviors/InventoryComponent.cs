@@ -1,11 +1,15 @@
-﻿using Assets.Assemblies.XenoSteader.Systems.Inventory;
+﻿using System;
+using Assets.Assemblies.XenoSteader.Systems.Inventory;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Behaviors
 {
+    [Serializable]
     public abstract class InventoryComponent : MonoBehaviour
     {
-        protected InventorySystem Inventory { get; private set; }
+        [SerializeField]
+        protected InventorySystem Inventory;
 
         public void Awake()
         {
