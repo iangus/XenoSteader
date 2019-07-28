@@ -1,38 +1,45 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
+using Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections;
+using JetBrains.Annotations;
+using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
-    public class InventorySystem
+    [Serializable]
+    public class InventorySystem : AbstractSystem
     {
-        private List<Item> _items;
+        [SerializeField]
+        protected ItemCollection EntityCollection;
 
-        public InventorySystem()
+        protected override AbstractSystem Init()
         {
-            _items = new List<Item>();
+            EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
+            return this;
         }
 
         /// <summary>
         /// Get a read only sequence of items.
         /// </summary>
-        public IEnumerable<Item> Items => _items;
+        public IEnumerable<Item> Items => EntityCollection;
 
         /// <summary>
         /// Remove a reference to an item from the list
         /// </summary>
         /// <param name="item"></param>
-        public void RemoveItemFromInventory(Item item) => _items.Remove(item);
+        public void RemoveItemFromInventory([NotNull] Item item) => EntityCollection.Remove(item);
 
         /// <summary>
         /// Add a single reference to an item to the list
         /// </summary>
         /// <param name="item"></param>
-        public void AddItemToInventory(Item item) => _items.Add(item);
+        public void AddItemToInventory([NotNull] Item item) => EntityCollection.Add(item);
 
         /// <summary>
         /// Add a enumerable of references to the inventory
         /// </summary>
         /// <param name="items"></param>
-        public void AddItemsToInventory(IEnumerable<Item> items) => _items.AddRange(items);
+        public void AddItemsToInventory([NotNull] IEnumerable<Item> items) => EntityCollection.AddRange(items);
     }
 }

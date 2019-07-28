@@ -1,15 +1,19 @@
-﻿using Assets.Assemblies.XenoSteader.Systems.Inventory;
+﻿using System;
+using Assets.Assemblies.XenoSteader.Systems.Inventory;
+using UnityEditor;
 using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Behaviors
 {
-    public class InventoryComponent : MonoBehaviour
+    [Serializable]
+    public abstract class InventoryComponent : MonoBehaviour
     {
-        public InventorySystem Inventory { get; private set; }
+        [SerializeField]
+        protected InventorySystem Inventory;
 
-        public void Awake()
+        public virtual void Awake()
         {
-            Inventory = new InventorySystem();
+            Inventory = AbstractSystem.CreateInstance<InventorySystem>();
         }
     }
 }

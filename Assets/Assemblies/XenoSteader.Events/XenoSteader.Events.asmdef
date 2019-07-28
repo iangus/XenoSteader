@@ -1,0 +1,4 @@
+﻿{
+  "name": "XenoSteader.Events",
+  "references": [ "XenoSteader.Core" ]
+}
