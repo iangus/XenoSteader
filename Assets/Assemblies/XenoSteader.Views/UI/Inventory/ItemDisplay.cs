@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Assets.Assemblies.XenoSteader.Core.Objects;
+using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
 using TMPro;
 
-public class ItemDisplay : MonoBehaviour
+namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
 {
-    public TextMeshProUGUI itemNameText;
-    public TextMeshProUGUI quantityText;
-    public Image itemImage;
-    public Item item;
-    
-    void Update()
+    public class ItemDisplay : MonoBehaviour
     {
-        itemNameText.text = item.name;
-        quantityText.text = "x" + item.quantity;
-        itemImage.sprite = item.sprite;
+        public TextMeshProUGUI itemNameText;
+        public TextMeshProUGUI quantityText;
+        public Image itemImage;
+        public Item item;
+        
+        void Update()
+        {
+            itemNameText.text = item.name;
+            quantityText.text = "x" + item.quantity;
+            itemImage.sprite = item.sprite;
+        }
     }
 }
+
