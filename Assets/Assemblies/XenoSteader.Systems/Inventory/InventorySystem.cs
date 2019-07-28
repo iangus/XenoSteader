@@ -13,7 +13,8 @@ namespace Assets.Assemblies.XenoSteader.Systems.Inventory
         [SerializeField]
         protected ItemCollection EntityCollection;
 
-        protected override InventorySystem Init<T>()
+        // It's stupid but I can't create T as a concrete type
+        protected override AbstractSystem Init()
         {
             EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
             return this;

@@ -8,7 +8,7 @@
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        protected abstract InventorySystem Init<T>() where T : AbstractSystem;
+        protected abstract AbstractSystem Init();
 
         /// <summary>
         /// Create an instance of a child class of AbstractSystem.
@@ -18,7 +18,7 @@
         public static T CreateInstance<T>() where T : AbstractSystem, new()
         {
             var t = new T();
-            t.Init<T>();
+            t.Init();
             return t;
         }
     }

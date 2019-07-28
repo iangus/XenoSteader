@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,30 +10,31 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
     public class ItemPickupComponent : MonoBehaviour
     {
         private readonly ItemPickupEvent _pickupEvent;
-        private GameObject _currentlyCollidingGameObject;
+        // Destroy is not immediate, 
+        // So we have to store the reference to the item we're hitting,
+        // or the sphere collider will hit it twice.
+        private HashSet<GameObject> _currentlyCollidingGameObjects;
 
         public ItemPickupComponent()
         {
+            _currentlyCollidingGameObjects = new HashSet<GameObject>();
             _pickupEvent = new ItemPickupEvent();
         }
 
         public void OnCollisionEnter(Collision collision)
         {
             var droppablePickup = collision.gameObject.GetComponent<Droppable>();
-            if (collision.gameObject != _currentlyCollidingGameObject && droppablePickup != null)
+            if (!_currentlyCollidingGameObjects.Contains(collision.gameObject) && droppablePickup != null)
             {
-                _currentlyCollidingGameObject = collision.gameObject;
+                _currentlyCollidingGameObjects.Add(collision.gameObject);
                 _pickupEvent.Invoke(droppablePickup.Item);
-                // Destroy is not immediate, 
-                // So we have to store the reference to the item we're hitting,
-                // or the sphere collider will hit it twice.
                 Destroy(collision.gameObject);
             }
         }
 
         public void OnCollisionExit(Collision collision)
         {
-            _currentlyCollidingGameObject = null;
+            _currentlyCollidingGameObjects.Remove(collision.gameObject);
         }
 
         public void SubscribeForPickupEvents(UnityAction<Item> callBack)
