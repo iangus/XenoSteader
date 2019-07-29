@@ -16,9 +16,9 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
         
         void Update()
         {
-            itemNameText.text = item.name;
+            itemNameText.text = item.Name;
             quantityText.text = "x" + item.quantity;
-            itemImage.sprite = item.sprite;
+            itemImage.sprite = item.Sprite;
         }
     }
 }
