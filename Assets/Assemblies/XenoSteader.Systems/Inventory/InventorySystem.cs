@@ -15,7 +15,10 @@ namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 
         protected override AbstractSystem Init()
         {
-            EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
+            if (EntityCollection == null)
+            {
+                EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
+            }
             return this;
         }
 
