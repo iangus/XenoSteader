@@ -483,6 +483,7 @@ MonoBehaviour:
   quantityText: {fileID: 3038089593647615049}
   itemImage: {fileID: 2301621391136798654}
   item: {fileID: 0}
+  dropEvent: {fileID: 11400000, guid: 61d85b1f2968cf441be0a933d9cd5450, type: 2}
 --- !u!1 &7282832644134792359
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,6 +924,17 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3895939593905535418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4372702873413287936}
+        m_MethodName: OnDropClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

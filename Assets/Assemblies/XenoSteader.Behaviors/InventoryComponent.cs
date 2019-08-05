@@ -13,7 +13,7 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
 
         public virtual void Awake()
         {
-            Inventory = AbstractSystem.CreateInstance<InventorySystem>();
+            // Inventory = AbstractSystem.CreateInstance<InventorySystem>();
         }
     }
 }

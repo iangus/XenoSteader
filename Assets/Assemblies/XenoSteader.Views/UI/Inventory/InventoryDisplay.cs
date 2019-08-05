@@ -38,20 +38,44 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
             // How are we going to implement change detection, or just recreate the list every frame? Seems like an expensive operation.
             // Maybe reset the items every frame, but only instantiate/destroy the GameObject if the number of items doesn't match up?
             // In the future an inventory may have a limited amount of slots. Empty slots just wouldn't have items, so no need to instantiate/destroy on update.
+            while(_itemDisplays.Count > _items.Count) {
+                _itemDisplays.RemoveAt(_itemDisplays.Count - 1);
+            }
+
+            while(_itemDisplays.Count < _items.Count) {
+                _itemDisplays.Add(BuildItemDisplay());
+            }
+
+            for (int i=0; i<_items.Count; i++)
+            {
+                Item item = _items[i];
+                GameObject itemUIObject = _itemDisplays[i];
+                SetItem(itemUIObject, item);
+            }
         }
 
-        GameObject BuildItemDisplay([NotNull] Item item)
+        GameObject BuildItemDisplay()
         {
-            print("instantiate display with item name " + item.Name);
             GameObject itemUIObject = Instantiate (ItemDisplayTemplate) as GameObject;
 
             itemUIObject.SetActive(true);
 
-            itemUIObject.GetComponent<ItemDisplay>().item = item;
-
             itemUIObject.transform.SetParent(gameObject.transform, false);
 
             return itemUIObject;
+        }
+
+        GameObject  BuildItemDisplay(Item item) {
+            GameObject itemUIObject = BuildItemDisplay();
+
+            SetItem(itemUIObject, item);
+
+            return itemUIObject;
+        }
+
+        void SetItem(GameObject itemUIObject, Item item)
+        {
+            itemUIObject.GetComponent<ItemDisplay>().item = item;
         }
 
     }
