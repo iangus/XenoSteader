@@ -39,7 +39,10 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
             // Maybe reset the items every frame, but only instantiate/destroy the GameObject if the number of items doesn't match up?
             // In the future an inventory may have a limited amount of slots. Empty slots just wouldn't have items, so no need to instantiate/destroy on update.
             while(_itemDisplays.Count > _items.Count) {
-                _itemDisplays.RemoveAt(_itemDisplays.Count - 1);
+                int lastIndex = _itemDisplays.Count - 1;
+                var itemDisplay = _itemDisplays[lastIndex];
+                _itemDisplays.RemoveAt(lastIndex);
+                Destroy(itemDisplay);
             }
 
             while(_itemDisplays.Count < _items.Count) {
