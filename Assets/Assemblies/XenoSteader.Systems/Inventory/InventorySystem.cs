@@ -24,7 +24,6 @@ namespace Assets.Assemblies.XenoSteader.Systems.Inventory
         }
 
         public void OnItemEventRaised(Item item) {
-            print("removing item with name " + item.Name);
             RemoveItemFromInventory(item);
         }
 
