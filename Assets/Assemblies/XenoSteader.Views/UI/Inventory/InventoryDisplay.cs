@@ -15,25 +15,19 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
         [SerializeField]
         private ItemCollection _items;
 
+        private int previousCount;
+
         public ItemCollection Items
         {
             get => _items;
             set => _items = value;
         }
 
-        // Start is called before the first frame
-        void Start()
-        {
-            _itemDisplays = new List<GameObject>();
-            foreach (Item item in _items)
-            {
-                _itemDisplays.Add(BuildItemDisplay(item));
-            }
-        }
 
         // Update is called once per frame
         void Update()
         {
+            if (_items == null) return;
             // TODO check if item list has changed. If so update what items are displayed.
             // How are we going to implement change detection, or just recreate the list every frame? Seems like an expensive operation.
             // Maybe reset the items every frame, but only instantiate/destroy the GameObject if the number of items doesn't match up?

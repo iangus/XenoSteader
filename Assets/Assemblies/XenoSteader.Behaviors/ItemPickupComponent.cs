@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
 using UnityEngine;
 using UnityEngine.Events;
 
 namespace Assets.Assemblies.XenoSteader.Behaviors
 {
-    [RequireComponent(typeof(SphereCollider))]
+    [RequireComponent(typeof(Collider))]
+    [RequireComponent(typeof(Rigidbody))]
     public class ItemPickupComponent : MonoBehaviour
     {
         private readonly ItemPickupEvent _pickupEvent;
@@ -19,6 +20,33 @@ namespace Assets.Assemblies.XenoSteader.Behaviors
         {
             _currentlyCollidingGameObjects = new HashSet<GameObject>();
             _pickupEvent = new ItemPickupEvent();
+        }
+
+        public void Start()
+        {
+            var rigidBody = GetComponent<Rigidbody>();
+            // ReSharper disable once LocalVariableHidesMember
+            var collider = GetComponents<Collider>().Single(c => c.GetType() != typeof(CharacterController));
+            if (rigidBody.isKinematic)
+            {
+                collider.isTrigger = true;
+            }
+        }
+
+        public void OnTriggerEnter(Collider triggerCollider)
+        {
+            var droppablePickup = triggerCollider.gameObject.GetComponent<Droppable>();
+            if (!_currentlyCollidingGameObjects.Contains(triggerCollider.gameObject) && droppablePickup != null)
+            {
+                _currentlyCollidingGameObjects.Add(triggerCollider.gameObject);
+                _pickupEvent.Invoke(droppablePickup.Item);
+                Destroy(triggerCollider.gameObject);
+            }
+        }
+
+        public void OnTriggerExit(Collider triggerCollider)
+        {
+            _currentlyCollidingGameObjects.Remove(triggerCollider.gameObject);
         }
 
         public void OnCollisionEnter(Collision collision)

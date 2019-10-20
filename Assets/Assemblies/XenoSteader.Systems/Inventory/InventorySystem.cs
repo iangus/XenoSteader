@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
     [Serializable]
-    public class InventorySystem : MonoBehaviour, IItemEventListener
+    public class InventorySystem : AbstractSystem, IItemEventListener
     {
         [SerializeField]
         protected ItemCollection EntityCollection;
@@ -59,5 +59,11 @@ namespace Assets.Assemblies.XenoSteader.Systems.Inventory
         /// </summary>
         /// <param name="items"></param>
         public void AddItemsToInventory([NotNull] IEnumerable<Item> items) => EntityCollection.AddRange(items);
+
+        protected override AbstractSystem Init()
+        {
+            EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
+            return this;
+        }
     }
 }
