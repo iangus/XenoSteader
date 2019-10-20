@@ -2,21 +2,39 @@
 using System.Collections.Generic;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities;
 using Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections;
+using Assets.Assemblies.XenoSteader.Events.Inventory;
 using JetBrains.Annotations;
 using UnityEngine;
 
 namespace Assets.Assemblies.XenoSteader.Systems.Inventory
 {
     [Serializable]
-    public class InventorySystem : AbstractSystem
+    public class InventorySystem : MonoBehaviour, IItemEventListener
     {
         [SerializeField]
         protected ItemCollection EntityCollection;
+        [SerializeField]
 
-        protected override AbstractSystem Init()
+        private ItemEvent _itemEvent;
+
+        public ItemEvent itemEvent
         {
-            EntityCollection = ScriptableObject.CreateInstance<ItemCollection>();
-            return this;
+            get => _itemEvent;
+            set => _itemEvent = value;
+        }
+
+        public void OnItemEventRaised(Item item) {
+            RemoveItemFromInventory(item);
+        }
+
+        private void OnEnable()
+        {
+            _itemEvent.RegisterListener(this);
+        }
+
+        private void OnDisable()
+        {
+            _itemEvent.UnregisterListener(this);
         }
 
         /// <summary>

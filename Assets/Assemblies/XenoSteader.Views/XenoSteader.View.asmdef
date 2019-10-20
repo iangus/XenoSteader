@@ -1,0 +1,4 @@
+﻿{
+	"name": "XenoSteader.View",
+	"references": ["XenoSteader.Core", "XenoSteader.Events", "Unity.TextMeshPro"]
+}
