@@ -1,4 +1,4 @@
-﻿namespace Assets.Assemblies.XenoSteader.Systems.Inventory
+﻿namespace Assets.Assemblies.XenoSteader.Systems
 {
     public abstract class AbstractSystem
     {

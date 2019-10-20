@@ -1,0 +1,4 @@
+﻿{
+  "name": "XenoSteader.EditorUtilities",
+  "references": [ "XenoSteader.Core" ]
+}

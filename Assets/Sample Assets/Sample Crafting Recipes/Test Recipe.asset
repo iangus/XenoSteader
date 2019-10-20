@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e13a7b91de740b84f94d87f0ef08463f, type: 3}
+  m_Name: Test Recipe
+  m_EditorClassIdentifier: 
+  _name: Test Recipe
+  ResourceRequirements:
+  - {fileID: 11400000, guid: 24103b61edf7a1747b08e475d7032384, type: 2}
