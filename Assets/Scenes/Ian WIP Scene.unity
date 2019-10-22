@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 3231339363544506708, guid: 237f5d7b72d9bbb4fa9809379e1d4150,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -250.50002
+      value: -250.49976
       objectReference: {fileID: 0}
     - target: {fileID: 3231339363544506708, guid: 237f5d7b72d9bbb4fa9809379e1d4150,
         type: 3}
@@ -256,7 +256,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _items
       value: 
-      objectReference: {fileID: 11400000, guid: 8b293e13272b0d547a4e2245d07ebf73,
+      objectReference: {fileID: 11400000, guid: 7c50efcf92588df4cb7e242f346c81e1,
         type: 2}
     - target: {fileID: 5564996762959891918, guid: 237f5d7b72d9bbb4fa9809379e1d4150,
         type: 3}
@@ -732,8 +732,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ddafb3b2e9395a41890a952919fa01b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EntityCollection: {fileID: 11400000, guid: 8b293e13272b0d547a4e2245d07ebf73, type: 2}
-  _itemEvent: {fileID: 11400000, guid: 61d85b1f2968cf441be0a933d9cd5450, type: 2}
 --- !u!4 &2018013997
 Transform:
   m_ObjectHideFlags: 0
