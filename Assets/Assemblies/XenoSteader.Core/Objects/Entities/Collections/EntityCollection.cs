@@ -11,7 +11,7 @@ namespace Assets.Assemblies.XenoSteader.Core.Objects.Entities.Collections
     public abstract class EntityCollection<T> : Entity, IList<T> where T : Entity
     {
         [SerializeField]
-        protected IList<T> _innerList;
+        protected List<T> _innerList;
 
         private Dictionary<Type, List<T>> _referencesBySubType;
         [SerializeField]
