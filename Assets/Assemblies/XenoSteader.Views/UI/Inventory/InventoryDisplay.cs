@@ -23,6 +23,12 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
             set => _items = value;
         }
 
+        // Start is called before the first frame	
+        void Start()	
+        {	
+            _itemDisplays = new List<GameObject>();	
+        }
+
 
         // Update is called once per frame
         void Update()
@@ -36,7 +42,7 @@ namespace Assets.Assemblies.XenoSteader.View.UI.Inventory
                 int lastIndex = _itemDisplays.Count - 1;
                 var itemDisplay = _itemDisplays[lastIndex];
                 _itemDisplays.RemoveAt(lastIndex);
-                Destroy(itemDisplay);
+                Destroy(itemDisplay); // TODO SetActive(false) instead of destroy and pool the display objects?
             }
 
             while(_itemDisplays.Count < _items.Count) {
